@@ -3,7 +3,7 @@
 ## Routing for markojs
 
 - Provides two marko tags: <router ... /> and &lt;aa href="" />
-- Also availabe in short form: router and ala
+- Also availabe in short form: router and aa
 
 ## npm install
 
