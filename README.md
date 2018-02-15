@@ -1,2 +1,9 @@
 # simple-marko-router
-Solid routing. Provides two marko tags: &lt;router ... /> and &lt;aa href="" /> - also availabe as a short tags, rotuer and aa
+
+## Routing for markojs
+
+Provides two marko tags: <router ... /> and <aa href="" /> - also availabe as a short tags, rotuer and aa
+
+<code>
+  router ...
+</code>
