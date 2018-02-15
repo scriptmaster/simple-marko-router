@@ -2,13 +2,19 @@
 
 ## Routing for markojs
 
-Provides two marko tags: <router ... /> and <aa href="" /> - also availabe as a short tags, router and aa
+- Provides two marko tags: <router ... /> and <aa href="" />
+- Also availabe in short form: router and ala
+
+## npm install
+
+  npm install https://github.com/scriptmaster/simple-marko-router
+
+  yarn add https://github.com/scriptmaster/simple-marko-router
 
 ## First step: Set up the router in an app component
 
-<code>
+
   router ...
-</code>
 
 ## Second and further steps: Link to a router page
 
