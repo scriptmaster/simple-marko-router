@@ -5,11 +5,13 @@
 - Provides two marko tags: <router ... /> and &lt;aa href="" />
 - Also availabe in short form: router and aa
 
-## npm install
+### npm install
 
 <code>
   npm install https://github.com/scriptmaster/simple-marko-router
 </code>
+
+### yarn add
 
 <code>
   yarn add https://github.com/scriptmaster/simple-marko-router
