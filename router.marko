@@ -1,0 +1,94 @@
+
+class {
+	onCreate(input) {
+		const routes = input.routes || this.getRoutes();
+		const initialRoute = input.initialRoute || location.pathname // || routes[0].path;
+
+		this.state = {
+			routes: routes,
+			routeData: {},
+			// initialRoute: initialRoute,
+			currentRoute: initialRoute,
+			routeComponent: ''
+		}
+
+		addEventListener('popstate', this.onPopState.bind(this));
+		addEventListener('routerPushState', this.onRouterPushState.bind(this));
+	}
+
+	onRouterPushState(ev) {
+		// console.log(ev, ev.detail);
+		const data = ev.detail;
+		this.state.currentRoute = data.href;
+		const component = this.getRouteComponent(data.href);
+		this.state.routeComponent = component;
+	}
+
+	onPopState(event) {
+		// console.log('onPopState', document.location, location.pathname, JSON.stringify(event.state))
+		this.onRouterPushState({detail: {href: location.pathname }})
+	}
+
+	async onMount() {
+		this.simpleRouter();
+	}
+
+	simpleRouter() {
+		this.state.routeComponent = this.getRouteComponent();
+	}
+
+	onRouteUpdated() {
+		// console.log(this, arguments);
+	}
+
+	onRouteComponentUpdate() {
+		// console.log('onRouteComponentUpdate')
+	}
+
+	onRouteComponentMount() {
+		const router = this.getComponent('router');
+		this.state.routeData = router.state.routeData;
+		this.emit('routeComponentMount')
+		//this.update();
+	}
+
+	getRoutes() {
+		return [
+			{ path: '/', component: require('src/pages/landing') },
+			{ path: '/manage', component: require('src/pages/manage/list-collections') },
+			{ path: '/manage/:collection', component: require('src/pages/manage/collection') },
+		]
+	}
+
+	getRouteComponent(path) {
+
+		const p2r = (p, s) => {
+			const names = p.match(/\:[^\/]+/g);
+			const r = new RegExp('^'+p.replace(/\:([^\/]+)/g, '[^\\/]+')+'$');
+			const matches = s.match( r )
+			// console.log(p, r, s);
+			// if(matches) console.log('matched:', p, s);
+			return matches;
+
+			if(matches) {
+				return names.reduce((p,c,i,a) => a[c.substr(1)]=matches[i+1], {})
+			}
+		}
+
+		/*
+		console.log(p2r('/manage/:collection', '/manage/forms'))
+		console.log(p2r('/manage/:collection', '/manage/forms/f1'))
+		console.log(p2r('/manage/:collection/:id', '/manage/forms/form1'))
+		*/
+
+		path = path || this.state.currentRoute;
+		const component = this.state.routes.filter(o => p2r(o.path, path));
+		if(component.length) return component[0];
+	}
+
+}
+
+if(state.loading)
+	-- Loading ...
+else if(state.routeComponent)
+	include(state.routeComponent.component) on-mount('onRouteComponentMount') key="router" // on-update('onRouteComponentUpdate') 

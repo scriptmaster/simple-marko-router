@@ -1,0 +1,20 @@
+class {
+
+	onCreate(input, out) {
+		// console.log(input.renderBody, input);
+		// this.input = input;
+	}
+
+	onClick(ev, el) {
+		ev.preventDefault();
+		let data = {id: this.id, href: this.input.href};
+		history.pushState(data, '', this.input.href)
+
+		const event = new CustomEvent('routerPushState', {detail: data});
+		dispatchEvent(event);
+	}
+
+}
+
+a href=input.href on-click('onClick')
+	include(input.renderBody)

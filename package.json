@@ -1,0 +1,20 @@
+{
+  "name": "simple-marko-router",
+  "version": "1.0.0",
+  "description": "- Provides two marko tags: <router ... /> and &lt;aa href=\"\" />\r - Also availabe in short form: router and aa",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/scriptmaster/simple-marko-router.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/scriptmaster/simple-marko-router/issues"
+  },
+  "homepage": "https://github.com/scriptmaster/simple-marko-router#readme"
+}
