@@ -36,36 +36,36 @@ Uses HTML5 pushstate.
 ### Simple sample
 
 <code>
-class {
+	class {
 
-	onCreate(input) {
-		const routes = this.getRoutes();
+		onCreate(input) {
+			const routes = this.getRoutes();
+		}
+
+		async onMount() {
+		}
+
+		onRouterUpdated() {
+			const router = this.getComponent('router');
+			const routeData = router.state.routeData;
+			this.update();
+		}
+
+		onRouteComponentMount() {
+			console.log('onRouteComponentMount', this.getComponent('router').state.routeData)
+		}
+
+		getRoutes() {
+			return [
+				{ path: '/', component: require('src/pages/landing') },
+				{ path: '/manage', component: require('src/pages/manage/list-collections') },
+				{ path: '/manage/:collection', component: require('src/pages/manage/collection') },
+			]
+		}
+
 	}
 
-	async onMount() {
-	}
-
-	onRouterUpdated() {
-		const router = this.getComponent('router');
-		const routeData = router.state.routeData;
-		this.update();
-	}
-
-	onRouteComponentMount() {
-		console.log('onRouteComponentMount', this.getComponent('router').state.routeData)
-	}
-
-	getRoutes() {
-		return [
-			{ path: '/', component: require('src/pages/landing') },
-			{ path: '/manage', component: require('src/pages/manage/list-collections') },
-			{ path: '/manage/:collection', component: require('src/pages/manage/collection') },
-		]
-	}
-
-}
-
-.content
-	router routes=state.routes on-update('onRouterUpdated') key='router' on-routeComponentMount('onRouteComponentMount')
+	.content
+		router routes=state.routes on-update('onRouterUpdated') key='router' on-routeComponentMount('onRouteComponentMount')
 
 </code>
