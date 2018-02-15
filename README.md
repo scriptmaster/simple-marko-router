@@ -7,14 +7,19 @@
 
 ## npm install
 
+<code>
   npm install https://github.com/scriptmaster/simple-marko-router
+</code>
 
+<code>
   yarn add https://github.com/scriptmaster/simple-marko-router
+</code>
 
 ## First step: Set up the router in an app component
 
-
+<code>
   router ...
+</code>
 
 ## Second and further steps: Link to a router page
 
