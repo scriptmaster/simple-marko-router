@@ -33,7 +33,7 @@
 
 Uses HTML5 pushstate.
 
-### Simple sample
+# Simple sample
 
 <code>
 	class {
@@ -67,5 +67,4 @@ Uses HTML5 pushstate.
 
 	.content
 		router routes=state.routes on-update('onRouterUpdated') key='router' on-routeComponentMount('onRouteComponentMount')
-
 </code>
